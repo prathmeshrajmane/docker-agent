@@ -6,16 +6,16 @@ pipeline {
 
   }
   stages {
-    stage('build') {
+    stage('build ') {
       steps {
-        sh '''go get -u github.com/ponzu-cms/ponzu/...
-go build'''
+        sh '''sh \'docker build -t simple-nginx .\'
+'''
       }
     }
 
-    stage('test') {
+    stage('Run container') {
       steps {
-        sh 'go test ./...'
+        sh 'sh \'docker run -d -it -p 8080:80 simple-nginx\''
       }
     }
 
