@@ -15,6 +15,12 @@ pipeline {
 
     stage('Run container') {
       steps {
+        sh 'sh \'docker pull nginx:alpine\''
+      }
+    }
+
+    stage('test') {
+      steps {
         sh 'sh \'docker run -d -it -p 8080:80 simple-nginx\''
       }
     }
