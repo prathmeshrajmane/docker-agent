@@ -7,12 +7,7 @@ pipeline {
   }
   stages {
     stage('build ') {
-      agent {
-        dockerfile {
-          filename 'Dockerfile'
-        }
-
-      }
+      agent any
       steps {
         sh '''sudo docker build -t multistage-app .
 '''
