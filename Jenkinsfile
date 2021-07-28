@@ -1,7 +1,18 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'centos'
+    }
+
+  }
   stages {
     stage('build ') {
+      agent {
+        docker {
+          image 'nginx:alpine'
+        }
+
+      }
       steps {
         sh 'sudo docker pull nginx:latest'
       }
