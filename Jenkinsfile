@@ -1,14 +1,9 @@
 pipeline {
-  agent {
-    docker {
-      image 'nginx:alpine'
-    }
-
-  }
+  agent any
   stages {
     stage('build ') {
       steps {
-        sh 'docker pull nginx:latest'
+        sh 'sudo docker pull nginx:latest'
       }
     }
 
