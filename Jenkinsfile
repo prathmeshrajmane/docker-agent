@@ -8,26 +8,27 @@ pipeline {
   stages {
     stage('build ') {
       agent {
-        docker {
-          image 'nginx:alpine'
+        dockerfile {
+          filename 'Dockerfile'
         }
 
       }
       steps {
-        sh 'sudo docker pull nginx:latest'
+        sh '''sudo docker build -t multistage-app .
+'''
       }
     }
 
     stage('Run container') {
       steps {
-        sh '''sh \'docker build -t simple-nginx .\'
+        sh '''sh docker run multistage-app
 '''
       }
     }
 
     stage('test') {
       steps {
-        sh 'sh \'docker run -d -it -p 8080:80 simple-nginx\''
+        sh 'echo "success"'
       }
     }
 
