@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build ') {
       steps {
-        sh '''sh \'docker build -t simple-nginx .\'
+        sh '''sh docker build -t simple-nginx .
 '''
       }
     }
