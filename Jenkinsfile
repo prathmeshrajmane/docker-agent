@@ -21,7 +21,4 @@ pipeline {
     }
 
   }
-  environment {
-    GOCACHE = '/tmp/gocache'
-  }
 }
