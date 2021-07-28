@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '''sh \'go build\'
+        sh '''sh \'sudo docker go build\'
 '''
       }
     }
