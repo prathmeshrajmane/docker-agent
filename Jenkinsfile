@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build ') {
       steps {
-        sh 'sh \'docker pull nginx:alpine\''
+        sh 'sudo docker pull nginx:latest'
       }
     }
 
