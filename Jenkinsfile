@@ -8,14 +8,14 @@ pipeline {
   stages {
     stage('build ') {
       steps {
-        sh '''sh docker build -t simple-nginx .
-'''
+        sh 'sh \'docker pull nginx:alpine\''
       }
     }
 
     stage('Run container') {
       steps {
-        sh 'sh \'docker pull nginx:alpine\''
+        sh '''sh \'docker build -t simple-nginx .\'
+'''
       }
     }
 
