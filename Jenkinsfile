@@ -10,13 +10,8 @@ pipeline {
       }
       steps {
         sh '''sudo docker build -t multistage-app .
-'''
-      }
-    }
+sudo docker run multistage-app
 
-    stage('Run container') {
-      steps {
-        sh '''sh docker run multistage-app
 '''
       }
     }
