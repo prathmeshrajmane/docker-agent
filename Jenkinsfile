@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'golang:1.14'
+      image 'nginx:alpine'
     }
 
   }
@@ -19,8 +19,5 @@ pipeline {
       }
     }
 
-  }
-  environment {
-    GOCACHE = '/tmp/gocache'
   }
 }
