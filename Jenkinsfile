@@ -10,15 +10,21 @@ pipeline {
       }
       steps {
         sh '''sudo docker build -t multistage-app .
-sudo docker run multistage-app
 
 '''
       }
     }
 
     stage('test') {
+      agent {
+        dockerfile {
+          filename 'Dockerfile'
+        }
+
+      }
       steps {
-        sh 'echo "success"'
+        sh '''sudo docker run multistage-app
+'''
       }
     }
 
