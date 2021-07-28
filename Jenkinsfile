@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh '''sudo docker build -t multistage-app .
+        sh '''docker build -t multistage-app .
 
 '''
       }
