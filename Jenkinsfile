@@ -1,7 +1,7 @@
 pipeline {
   agent none
   stages {
-    stage('build and test') {
+    stage('build') {
       agent {
         docker {
           image 'golang:1.14'
@@ -12,8 +12,13 @@ pipeline {
         GOCACHE = '/tmp/gocache'
       }
       steps {
-        sh '''go build
-go test ./...'''
+        sh 'go build -a -installsuffix cgo -o main .'
+      }
+    }
+
+    stage('Run') {
+      steps {
+        sh './main'
       }
     }
 
