@@ -1,19 +1,25 @@
 pipeline {
-  agent any
-  stages {
-    stage('build ') {
-      agent {
-        dockerfile {
-          filename 'Dockerfile'
+    agent none
+    stages {
+        stage('build and test') {
+            agent { docker { image 'golang:1.14' } }
+            environment {
+                GOCACHE = '/tmp/gocache'
+            }
+            steps {
+                sh 'go build'
+                sh 'go test ./...'
+            }
         }
-
-      }
-      steps {
-        sh '''
-
-'''
-      }
+        stage('deploy') {
+            agent any
+            environment {
+                BUILD_NUMBER_BASE = '0'
+                VERSION_MAJOR = '0'
+                VERSION_MINOR = '1'
+                VERSION_PATCH = "${env.BUILD_NUMBER.toInteger() - BUILD_NUMBER_BASE.toInteger()}"
+            }
+            
+        }
     }
-
-  }
 }
